@@ -1,0 +1,47 @@
+#include <iostream>
+
+using namespace std;
+
+
+//----------------------------------Codeforces Problem 25A: IQ Test:------------------------------------------------
+                      /*
+                          Given an input of n numbers, in which all but one number is either even or odd, return the different number.
+                          i.e: 2, 4, 6, 8, 9, 10, 12, 6, 8 := prints 9, because only 9 is even
+                               1, 3, 1, 1, 4, 7            := prints 4, because only 4 is odd.
+                          Input format:
+                          5             - size of array/count of numbers
+                          2 4 1 6 2     - numers, given that only one number is different (see above)
+                          
+                            
+                      */
+int main()
+{
+    int N, x;
+    int c=0;
+    int even=-1,odd=-1;
+    cin >> N;
+
+    for (int i=1; i<=N; i++)
+    {
+        cin >> x;
+        if (x&1)
+        {
+            c--;
+            odd=i;
+        }
+        else
+        {
+            c++;
+            even=i;
+        }
+    }
+
+    if(c>0)
+    {
+        cout << even;
+    }
+    else{
+        cout << odd;
+    }
+    cout << endl;
+}
