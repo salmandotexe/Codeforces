@@ -1,0 +1,31 @@
+#include <iostream>
+
+using namespace std;
+
+
+                            /*
+                                  Solution to: http://codeforces.com/problemset/problem/139/A
+                            */
+int main()
+{
+    int limit,sum(0), week[7];
+
+    cin >> limit;
+    for(int i=0;i<7;i++)
+    {
+        cin >>week[i];sum+=week[i];
+    }
+
+    int rem=limit;
+    for(int i=0;;i++)
+    {
+        rem-=week[i%7];
+        if(rem<=0)
+        {
+            cout << i%7+1 << endl;
+            return 0;
+        }
+
+    }
+
+}
