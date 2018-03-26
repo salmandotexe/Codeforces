@@ -1,0 +1,18 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+
+
+                                      /*
+                                              Solution to http://codeforces.com/problemset/problem/620/A
+                                      
+                                      */
+int main()
+{
+    int x1,y1,x2,y2,delx,dely;
+    cin >> x1 >> y1 >> x2 >> y2;
+    delx=abs(x1-x2);
+    dely=abs(y1-y2);
+    cout << delx+dely-min(delx,dely) << endl;
+}
