@@ -15,7 +15,7 @@ int main()
     {
         cin >> arr[i];
     }
-    sort(arr,arr+s); //this step will fail on some inputs, but is a compromise for less  time complexity
+    sort(arr,arr+s); //this step will fail on some inputs, but is a compromise for less time complexity. O(n) instead of O(n^3)
     for(int i=s-1-2;i>-1;i--)
     {
         if(arr[i] + arr[i+1] >arr[i+2])
