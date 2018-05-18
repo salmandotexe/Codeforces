@@ -1,15 +1,7 @@
 #include<iostream>
-#include <vector>
-#include <algorithm>
 
 using namespace std;
-vector<int> v(14);
-int arro[14]={0};
 
-
-/*
-    Time limit exceeded on Test 10
-*/
 int findindex(int i)
 {
   int x;
@@ -19,40 +11,42 @@ int findindex(int i)
   return x;
 }
 
-int computenew(int a)
-{
-  vector<int> w(14);
-  w=v;
-  int temp=w[a],idx=a;//number of stones in hole i.
-  w[a]-=temp;
-
-  for(int i=1;temp!=0;i++)
-  {
-    int x=findindex(idx+i);
-    w[x]++;
-    temp--;
-  }
-  int res=0;
-  for(int i=0;i<14;i++)
-  {
-    res+=w[i]&1?0:w[i];
-  }
-  return res;
-}
-
 int main()
 {
+  int v[14];
   for(int i=0;i<14;i++)
   {
     cin >> v[i];
   }
-  int m=-1;
+  int res=-1;
+  //Process of adding stones is repeated every 14 holes. so number of stones added per hole = k/14 where k is number of stones of specified hole
   for(int i=0;i<14;i++)
   {
-    if(v[i]>0)
+    int temp[14]={0},p=i+1;
+    for(int j=0;j<14;j++)
     {
-      m=max(m,computenew(i));
+      //copy the array
+      temp[j]=v[j];
     }
+    int k=temp[i];  //stones in hole specified
+    temp[i]=0;
+    for(int j=0;j<14;j++)
+    {
+        temp[j]+=k/14;  //got us covered if stones >14.
+    }
+    k%=14;
+    //now it is guaranteed that stones <14
+    while(k--)
+    {
+      p=(p==14?0:p);
+      temp[p++]++;
+    }
+    int res_interm=0;
+    for(int j=0;j<14;j++)
+    {
+        res_interm+=(temp[j]&1)?0:temp[j];
+    }
+    res=max(res,res_interm);
   }
-  cout << m;
+  cout << res;
 }
