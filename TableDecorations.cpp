@@ -19,3 +19,5 @@ int main()
     cout << res;
     //gives result
 }
+
+//edit: changed the description for consistency.
