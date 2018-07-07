@@ -34,3 +34,4 @@ int main()
   }
   cout << c << endl;
 }
+//updated name. its contest 490. not problem 490
