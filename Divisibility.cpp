@@ -20,6 +20,6 @@ int main()
     b*=-1;
     swap(a,b);
   }
-  cout << b/k-(a-1)/k;
+  cout << b/k-(a-1)/k;  //because overlapping property of a=1, and a%k!=0
   cout << endl;
 }
