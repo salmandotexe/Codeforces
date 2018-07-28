@@ -40,3 +40,23 @@ public:
     }
   }
 };
+
+
+int main()
+{
+  int N,u,v,q,k,x;
+  cin >> N >> q;
+  Graph g(N);
+
+  for(int i=2;i<=N;i++)
+  {
+    cin >> x;
+    g.add(x,i);
+  }
+  while(q--)
+  {
+    cin >> u >> k;
+    g.dfs(u,k);
+  }
+}
+
