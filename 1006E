@@ -1,0 +1,42 @@
+//attempted https://codeforces.com/problemset/problem/1006/E
+
+#include <bits/stdc++.h>
+using namespace std;
+typedef set<int> vi;
+
+class Graph{
+public:
+  int V;
+  vi *ptr;
+  Graph(int ve)
+  {
+    V=ve;
+    ptr = new set<int>[V+1];
+  }
+  void add(int u, int v)
+  {
+    ptr[u].insert(v);
+  }
+
+  void dfs(int src, int k)
+  {
+    vector<bool> visited(V+1,false);
+    vector<int> order;
+    dfs(src,visited,order);
+    if(order.size()<k)
+      cout << -1 << endl;
+    else
+      cout << order[k-1]<<endl;
+  }
+  void dfs(int src, vector<bool> &visited,vector<int> &order)
+  {
+    if(!visited[src])
+    {
+      order.push_back(src);
+      visited[src]=1;
+      for(auto a:ptr[src])
+        if(!visited[a])
+          dfs(a,visited,order);
+    }
+  }
+};
