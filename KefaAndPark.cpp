@@ -1,77 +1,83 @@
 #include <bits/stdc++.h>
+
+//Wrong Answer on Test 8.
+
 using namespace std;
 
+typedef vector<int> vi;
 
 class Graph{
-  int V,E;
-  list<int> *ptr;
 public:
-  Graph(int v)
+  int V;
+  vi *ptr;
+  Graph(int Ve)
   {
-    V=v;
-    ptr= new list<int>[V+1];
+    V=Ve;
+    ptr = new vi[V+1];
   }
-  void addedge(int u, int v)
+  void add(int u, int v)
   {
     ptr[u].push_back(v);
   }
-  void DFS(int s, int *cats, int *dist);
-};
 
-void Graph::DFS(int s, int *cats, int *dist)
-{
-  int visited[V+1]={0};
-  stack<int> stack;
-  stack.push(s);
-
-  while (!stack.empty())
+  void dfs(int src, vector<bool> &visited, vi &cat, int currcount, int maxcount, vi &dist, int &res)
   {
-    s = stack.top();
-    stack.pop();
-    if (!visited[s])
+    if(!visited[src])
     {
-      visited[s] = 1;
-      //if(cats[s])
-        //dist[s]=1;
-    }
-
-    for (auto i = ptr[s].begin(); i != ptr[s].end(); ++i)
-      if (!visited[*i])
+      visited[src]=1;
+      if(cat[src])
+        currcount++;
+      if(currcount>maxcount)
       {
-        stack.push(*i);
-        cats[*i]=cats[s]+cats[*i];
-
+        dist[src]=-currcount;
       }
-
-      if(ptr[s].empty())
-      cout << "Leaf at "<<s << " has met "<< cats[s] << " cats so far\n";
+      if (cat[src]==0)
+        currcount=0;
+      if(ptr[src].empty())
+      {
+        if(dist[src]>0)
+        {
+          res++;
+        }
+      }
+      for(auto a:ptr[src])
+      {
+        if(!visited[a])
+        {
+          if(dist[src]<0)
+            dist[a]=-currcount;
+          dfs(a,visited,cat,currcount,maxcount,dist,res);
+        }
+      }
+    }
   }
-}
-
+  void dfs(int src, int maxcount, vi &cat)
+  {
+    vector<bool> visited(V+1,false);
+    vi dist(V+1,1);
+    int res=0;
+    dfs(src,visited, cat, 0,maxcount, dist,res);
+    cout << res << endl;
+  }
+};
 
 int main()
 {
-  int n,k,maxcats,x;
-  cin >> n >> maxcats;
-  int cats[n+1];
-  int dist[n+1]={0};
+    int V, maxcats,u,v;
+    cin >> V >> maxcats;
+    Graph g(V);
+    vi cat(V+1,0);
+    for(int i=1; i<=V;i++)
+    {
+      int x;
+      cin >> x;
+      cat[i]=x;
+    }
 
-  Graph g(n);
-  cats[0]=0;
-
-  for(int i=1;i<=n;i++)
-  {
-    cin >> x;
-    cats[i]=x;
-  }
-
-  k=n-1;
-  int u,v;
-
-  while(k--)
-  {
-    cin >> u >> v;
-    g.addedge(u,v);
-  }
-  g.DFS(1,cats,dist);
+    for(int i=1;i<V;i++)
+    {
+      cin >> u >> v;
+      g.add(u,v);
+    }
+    g.dfs(1,maxcats, cat);
 }
