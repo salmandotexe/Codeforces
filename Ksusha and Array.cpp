@@ -1,4 +1,3 @@
-//WA on test 26
 #include <bits/stdc++.h>
 using namespace std;
 
