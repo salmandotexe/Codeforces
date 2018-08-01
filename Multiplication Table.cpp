@@ -30,3 +30,4 @@ int main()
   }
   cout << facs.size()<<endl;
 }
+//edit: updated description
