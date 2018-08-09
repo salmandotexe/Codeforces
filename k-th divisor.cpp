@@ -4,9 +4,6 @@ typedef long long ll;
 
 int main()
 {
-  //vector<bool> notprime(1e8,false);
-  //notprime[0]=notprime[1]=true;
-
 
   ll N, k;
   cin >> N >> k;
