@@ -32,7 +32,7 @@ int main()
     for(auto c:s)
     {
       int x=c-v[i];
-      if (m.count(x) && (m[x]>= 1 && x != v[i]))
+      if (m.count(x) && (m[x] > 1 || (m[x] == 1 && x != v[i]))) //fixed a (non)trivial error here, AC.
         f=1;
     }
     if(f==0)
