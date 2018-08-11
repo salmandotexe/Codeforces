@@ -1,4 +1,7 @@
 #include <bits/stdc++.h>
+//edit: fixed description.
+
+//https://codeforces.com/problemset/problem/762/A
 using namespace std;
 typedef long long ll;
 
