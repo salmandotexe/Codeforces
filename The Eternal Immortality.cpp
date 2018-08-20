@@ -1,3 +1,5 @@
+//Solution to: https://codeforces.com/contest/869/problem/B
+//fixed typo
 #include <bits/stdc++.h>
 
 using namespace std;
