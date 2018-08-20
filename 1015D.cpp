@@ -1,14 +1,17 @@
 #include <bits/stdc++.h>
 
-//not yet complete.
-
 using namespace std;
 typedef long long ll;
+
+ll dist(ll a, ll b)
+{
+  return a>b?(a-b):(a+b);
+}
 
 int main()
 {
   long long n,k,s,d,i;
-  ll dist=0,delta;
+  ll delta, curpos=1,dist;
   cin >> n >> k >> s;
   if(k*(n-1)<s || k>s)
     cout << "NO\n";
@@ -20,24 +23,18 @@ int main()
     for(i=0;i<d;i++)
       cout << (i&1?1:n)<< " ";
     dist+=d*(n-1);
-    //d&1=at 1.
-    //cout << endl << s-dist <<" need to cover in "<< delta<<endl;
-    ll alpha= (s-dist - delta) + 1;
-    ll curpos;
-    if(i&1)
-      curpos=1+alpha;
-    else
-      curpos=n-alpha+1;
-    cout << curpos<< " ";
-    for(ll i=1;i<delta;i++)
+    while(delta>0)
     {
-      if(i&1)
-        cout << curpos-1<< " ";
+      ll a=min(n-1,dist);
+      if(curpos>a)
+        curpos-=a;
       else
-        cout << curpos<< " ";
+        curpos+=a;
+      a=curpos;
+      cout << curpos<<" ";
+      dist-=a;
+      delta--;
     }
-    cout << endl;
-
   }
   main();
 }
