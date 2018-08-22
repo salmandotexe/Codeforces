@@ -1,5 +1,5 @@
 #include <bits/stdc++.h>
-//WA on Test 3.
+//WA on Test 4 now. fml
 using namespace std;
 typedef long long ll;
 int main()
@@ -34,6 +34,19 @@ int main()
     ll p=2*(a+b);
     ll s = a*b;
     ll resA=a,resB=b;
+    
+    for(int i=1;i<sides.size()-1;i++)
+    {
+      ll A=sides[i];
+      ll B=sides[i+1];
+      ll P=2*(A+B);
+      ll ar=A*B;
+      if(P*P*s<p*p*ar)
+      {
+        resA=A;
+        resB=B;
+      }
+    }
     cout << resA << " "<< resA<< " "<<resB << " "<<resB<<endl;
   }
 }
