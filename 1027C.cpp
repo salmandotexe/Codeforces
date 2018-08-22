@@ -1,5 +1,4 @@
 #include <bits/stdc++.h>
-//WA on Test 4 now. fml
 using namespace std;
 typedef long long ll;
 int main()
@@ -31,22 +30,20 @@ int main()
     }
     ll a=sides[0];
     ll b=sides[1];
-    ll p=2*(a+b);
-    ll s = a*b;
-    ll resA=a,resB=b;
-    
-    for(int i=1;i<sides.size()-1;i++)
+    ll ps=2*(sides[0]+sides[1]);
+    ps*=ps;
+    ll s=sides[0]*sides[1];
+    for(int i=0;i<sides.size()-1;i++)
     {
-      ll A=sides[i];
-      ll B=sides[i+1];
-      ll P=2*(A+B);
-      ll ar=A*B;
-      if(P*P*s<p*p*ar)
+      ll pss=ll(2*(sides[i]+sides[i+1]));
+      pss*=pss;
+      ll ss= ll(sides[i]*sides[i+1]);
+      if(ll(pss*s)<ll(ps*ss))
       {
-        resA=A;
-        resB=B;
+        a=sides[i];
+        b=sides[i+1];
       }
     }
-    cout << resA << " "<< resA<< " "<<resB << " "<<resB<<endl;
+    cout << a << " " << b << " "<< a << " "<<b<<endl;
   }
 }
