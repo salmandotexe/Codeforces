@@ -36,5 +36,4 @@ int main()
       delta--;
     }
   }
-  main();
 }
