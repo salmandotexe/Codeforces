@@ -1,5 +1,5 @@
 #include <bits/stdc++.h>
-
+//WA on test 7 :|
 using namespace std;
 
 bool islegal(string s, string t, int n,int m)
@@ -47,7 +47,7 @@ int main()
   string s,t;
   cin >> n>> m;
   cin >> s >> t;
-  if(islegal(s,t,n,m))
+  if(s=="*"||islegal(s,t,n,m))
     cout << "YES\n";
   else
     cout << "NO\n";
