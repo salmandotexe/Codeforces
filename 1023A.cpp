@@ -1,55 +1,58 @@
 #include <bits/stdc++.h>
-//WA on test 7 :|
 using namespace std;
-
-bool islegal(string s, string t, int n,int m)
+//WA on test 55
+string contains(string s1, string s2)
 {
+  if(s1.size()==0)
+    return "YES";
+  if(s1.size()>s2.size())
+    return "NO";
 
-  int index=-1;
-  if(n-m>1)
-    return false;
-  for(int i=0;i<n;i++)
+  int last=0;
+  int found=0;
+  for(auto c:s1)
   {
-    if(s[i]==t[i])
-      continue;
-    else
-      if(s[i]=='*')
+    found=0;
+    for(int j=last;j<s2.size();j++)
+    {
+      last=j;
+      if(c==s2[j])
       {
-        index=i;
+        found=1;
         break;
       }
-      else
-        return false;
-  }
-  if(index==n-1)
-    return true;//last character * all other same
-  if(index>=0)
-  {
-    index++;
-    int c=index;
-    for(int i=0;i<t.size();i++)
-    {
-      if(t[i]!=s[c++])
-        c=index;
-      else
-        if(c==s.size())
-          return true;
-      if(i==t.size()-1)
-        return false;
+      if(j==s2.size()-1 && found==0)
+        return "NO";
     }
-
   }
-
+  if(last!=s2.size()-1)
+    return "NO";
+  if(found==1)
+    return "YES";
+  else
+    return "NO";
 }
 int main()
 {
   int n,m;
   string s,t;
-  cin >> n>> m;
-  cin >> s >> t;
-  if(s=="*"||islegal(s,t,n,m))
-    cout << "YES\n";
-  else
-    cout << "NO\n";
+  cin >> n >> m >> s >> t;
+  string s1="",s2="",stres="";
+  int f=0;
+  for(int i=0;i<n;i++)
+  {
+    if(s[i]!='*')
+      if(!f)
+        s1+=s[i];
+      else
+        s2+=s[i];
+    else
+    {
+      f=1;
+      continue;
+    }
+  }
+  stres=string(s1+s2);
+  cout << contains(stres,t)<<endl;
 
 }
