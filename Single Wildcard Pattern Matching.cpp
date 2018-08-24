@@ -1,5 +1,6 @@
 #include <bits/stdc++.h>
 //i hate you so much, this took 13 attempts so far.
+//https://codeforces.com/contest/1023/problem/A
 using namespace std;
 
 int fu(string s1, string s2, string t)
