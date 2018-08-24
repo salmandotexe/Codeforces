@@ -1,36 +1,29 @@
 #include <bits/stdc++.h>
 using namespace std;
-//WA on test 55
-string contains(string s1, string s2)
+//WA on Test 87
+bool contains(string s1,string s2, string s)
 {
   if(s1.size()==0)
-    return "YES";
-  if(s1.size()>s2.size())
-    return "NO";
+    return 1;
+  if(s1.size()+s2.size()>s.size())
+    return 0;
 
   int last=0;
   int found=0;
-  for(auto c:s1)
+
+  for(int i=0;i<s1.size();i++)
   {
-    found=0;
-    for(int j=last;j<s2.size();j++)
-    {
-      last=j;
-      if(c==s2[j])
-      {
-        found=1;
-        break;
-      }
-      if(j==s2.size()-1 && found==0)
-        return "NO";
-    }
+    if(s1[i]!=s[i])
+      return 0;
   }
-  if(last!=s2.size()-1)
-    return "NO";
-  if(found==1)
-    return "YES";
-  else
-    return "NO";
+  int N=s.size()-1;
+
+  for(int i=s2.size()-1;i>=0;i--)
+  {
+    if(s2[i]!=s[N--])
+      return 0;
+  }
+  return 1;
 }
 int main()
 {
@@ -39,6 +32,10 @@ int main()
   cin >> n >> m >> s >> t;
   string s1="",s2="",stres="";
   int f=0;
+  if(n>m+1)
+  {
+    cout << "NO\n";return 0;
+  }
   for(int i=0;i<n;i++)
   {
     if(s[i]!='*')
@@ -52,7 +49,7 @@ int main()
       continue;
     }
   }
-  stres=string(s1+s2);
-  cout << contains(stres,t)<<endl;
+  cout << (contains(s1,s2,t)?"YES":"NO")<<endl;
+  //why is it stuck running on test 1
 
 }
