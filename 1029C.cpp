@@ -1,6 +1,7 @@
 #include <bits/stdc++.h>
 //WA on Test 7.
 //probably better way to do this is to precompute and store results
+//for O(n) complexity
 using namespace std;
 typedef long long ll;
 
