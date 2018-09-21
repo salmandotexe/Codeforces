@@ -11,6 +11,9 @@ ll gcd(ll  a, ll b)
         return b;
     return gcd(b%a,a);
 }
+
+//Edit: Solution Hacked. :( 
+
 int main()
 {
   int n;
