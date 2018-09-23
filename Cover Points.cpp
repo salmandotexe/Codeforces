@@ -14,6 +14,15 @@ ll gcd(ll  a, ll b)
 
 //Edit: Solution Hacked. :( 
 
+/*
+hack test: 
+
+2
+1 6
+4 4
+
+*/
+
 int main()
 {
   int n;
