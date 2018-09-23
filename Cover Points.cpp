@@ -1,46 +1,20 @@
 #include <bits/stdc++.h>
 
 using namespace std;
-typedef long long ll;
-typedef vector<int> vi;
-typedef vector<ll> vl;
-
-ll gcd(ll  a, ll b)
-{
-    if (a == 0)
-        return b;
-    return gcd(b%a,a);
-}
-
-//Edit: Solution Hacked. :( 
-
-/*
-hack test: 
-
-2
-1 6
-4 4
-
-*/
 
 int main()
 {
-  int n;
+  int n, a,b;
   cin >> n;
-  ll res=INT_MIN;
-  ll a,b;
-
-  ll x,y;
+  int i=0,j=0;
   while(n--)
   {
     cin >> a >> b;
-    ll r=a*a + b*b;
-    if(r>res)
+    if(a+b>i+j)
     {
-      res=r;
-      x=a;y=b;
+      i=a;
+      j=b;
     }
   }
-  cout << ll(x+y)<<endl;
-
+  cout << i+j <<endl;
 }
