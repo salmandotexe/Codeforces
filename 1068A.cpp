@@ -1,1 +1,3 @@
 //ceil K+L/M
+
+//...why am I so lazy...
