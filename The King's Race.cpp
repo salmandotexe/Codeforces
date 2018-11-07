@@ -4,6 +4,7 @@ using namespace std;
 
 int main()
 {
+  //https://codeforces.com/contest/1075/problem/A
   ll n,xc,yc;
   cin >> n;
   cin >> xc >> yc;
