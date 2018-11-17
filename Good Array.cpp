@@ -10,7 +10,7 @@ int main()
   cin >> n;
   int x;
   vector<pii> data(n);
-  int sum=0;
+  long long sum=0;  //fixed WA on T24
   for(int i=0;i<n;i++)
   {
      cin >> x;
