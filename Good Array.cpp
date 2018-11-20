@@ -1,34 +1,12 @@
-#include <bits/stdc++.h>
-#define pii pair<int,int>
-#define vi vector<int>
-#define pb push_back
-using namespace std;
-
-int main()
-{
-  int n;
-  cin >> n;
-  int x;
-  vector<pii> data(n);
-  long long sum=0;  //fixed WA on T24
-  for(int i=0;i<n;i++)
+//from Editorial
+/*
+  Calculate sum of whole array: sum.
+  maintain array cnt[i]= number of elements in given array that equals i.
+  
+  for(int i=0;i<cnt.size();i++) 
   {
-     cin >> x;
-     sum+=x;
-     data[i]={x,i+1};
+    sum[i]=sum-arr[i];
+    cnt[arr[i]]--;
+    if sum is even && cnt[sum/2] >0 i is nice
   }
-  sort(data.begin(),data.end());
-  vi ans;
-  for(auto a:data)
-  {
-    int largest=0;
-    largest=((a.first==data[n-1].first)?(data[n-2].first):(data[n-1].first));
-    if(sum-largest-a.first==largest)
-      ans.pb(a.second);
-  }
-  cout << ans.size()<<endl;
-  for(auto a:ans) cout << a << " ";
-  cout <<endl;
-
-
-}
+*/
