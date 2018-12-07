@@ -1,74 +1,49 @@
-/*
-    DFS(1,bool array,param)
-      check if param>k
-*/
 
-//following code has WA on Test 8.
+//months later, still WA on Test 8
 
 #include <bits/stdc++.h>
+#define MAXX 1000005
+#define ll long long
+#define pb push_back
+#define vi vector<int>
+#define pii pair<int,int>
+#define mp make_pair
 using namespace std;
 
-typedef vector<int> vi;
+int m;
+vi V[(int)(1e5+10)];
+int cats[(int)(1e5+10)];
 
-class Graph{
-public:
-  int V;
-  vi *ptr;
-  Graph(int Ve)
-  {
-    V=Ve;
-    ptr = new vi[V+1];
-  }
-  void add(int u, int v)
-  {
-    ptr[u].push_back(v);
-  }
+int res=0;
 
-  void dfs(int src, vector<bool> &visited, vi &cat, int currcount, int maxcount, vi &dist, int &res)
-  {
-    if(!visited[src])
-    {
-      visited[src]=1;
-      if(cat[src])
-        currcount++;
-      if(currcount>maxcount&&src!=1)
-        return;
-      if(cat[src]==0)
-        currcount=0;
-      if(ptr[src].empty())
+int dfs(int src,int curr)
+{
+    if(curr>m)
+        return 0;
+    if(V[src].size()==0)
         res++;
-      for(auto a:ptr[src])
-        if(!visited[a])
-          dfs(a,visited,cat,currcount,maxcount,dist,res);
+    for(auto a:V[src])
+    {
+        if(curr+cats[a]>m)
+            continue;
+        if(cats[a])
+            dfs(a,curr+1);
+        else
+            dfs(a,0);
     }
-  }
-  void dfs(int src, int maxcount, vi &cat)
-  {
-    vector<bool> visited(V+1,false);
-    vi dist(V+1,0);
-    int res=!cat[1];
-    dfs(src,visited, cat, 0,maxcount, dist,res);
-    cout << res << endl;
-  }
-};
-
+}
 int main()
 {
-    int V, maxcats,u,v;
-    cin >> V >> maxcats;
-    Graph g(V);
-    vi cat(V+1,0);
-    for(int i=1; i<=V;i++)
+    int n,u,v;
+    cin >> n >> m;
+    for(int i=1;i<=n;i++)
+        cin >> cats[i];
+    V[0].pb(1);
+    for(int i=0;i<n-1;i++)
     {
-      int x;
-      cin >> x;
-      cat[i]=x;
+        cin >> u >> v;
+        V[u].pb(v);
     }
-
-    for(int i=1;i<V;i++)
-    {
-      cin >> u >> v;
-      g.add(u,v);
-    }
-    g.dfs(1,maxcats, cat);
+    dfs(0,0);
+    cout << res<<endl;
 }
