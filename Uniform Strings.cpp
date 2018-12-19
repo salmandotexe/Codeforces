@@ -23,3 +23,4 @@ int main()
     cout << s <<endl;
   }
 }
+//fixed typo
