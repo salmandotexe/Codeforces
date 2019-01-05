@@ -23,7 +23,7 @@ int main()
   for(int i=0;i<n;i++) for(int j=0;j<4;j++)
   {
     dp[i + 1][j + (s[i] == hard[j])] = min(dp[i + 1][j + (s[i] == hard[j])], dp[i][j]);
-		dp[i + 1][j] = min(dp[i + 1][j], dp[i][j] + a[i]);
+		dp[i + 1][j] = min(dp[i + 1][j], dp[i][j] + a[i]);	//;-;
   }
   cout << *min_element(dp[n],dp[n]+4)<<endl;
 }
