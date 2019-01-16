@@ -1,12 +1,12 @@
 #include <bits/stdc++.h>
 #define vi vector<int>
+#define pii pair<int,int>
+#define all(x) x.begin(),x.end()
+#define pb push_back
+#define mp make_pair
 
 using namespace std;
-double five
-(int sum, int n)
-{
-  return sum*10>=45*n;
-}
+
 int main()
 {
   int n;
@@ -14,10 +14,14 @@ int main()
   vi v(n);
   for(int i=0;i<n;i++) cin >> v[i];
 
-  int res=accumulate(v.begin(),v.end(),0);
-  int i=0;
   sort(v.begin(),v.end());
-  while(!five(res,n))
-    res+=5-v[i++];
-  cout << i << endl;
+  int sum=accumulate(v.begin(),v.end(),0);
+  int cnt=0;
+  int i=0;
+  while(10*sum<45*n)
+  {
+    sum+=(5-v[i++]);
+    cnt++;
+  }
+  cout <<cnt<<endl;
 }
