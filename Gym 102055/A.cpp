@@ -33,7 +33,6 @@ int main()
     for(int i=0;i<n;i++) cin >> v[i] .first;  //v[i].first is Di.
     for(int i=0;i<n;i++) cin >> v[i].second;  //v[i].s is Ti.
     sort(all(v));
-    //for(auto a:v) cout << a.f <<" " <<a.s <<endl;
     ll res=0;
     int cnt=0;
     int idx=0;
