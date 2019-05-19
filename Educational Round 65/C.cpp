@@ -18,53 +18,46 @@
 #define precise fixed(cout);cout<<setprecision(16);
 using namespace std;
 
-ostream& operator << (ostream &out, vector<int> &v) { for(auto a:v) out << a<<" "; out<<endl; }
+//ostream& operator << (ostream &out, vector<int> &v) { for(auto a:v) out << a<<" "; out<<endl; }
 
-// Disjoint Set DataStructure
 const int maxn=5e5+5;
-
-int parent[maxn];
+int arr[maxn];
+int par[maxn];
 int urank[maxn];
 
-void create(ll x)
+void make_set(int &x)
 {
-	parent[x] = x ;
-	urank[x] = 1 ; 		// rank = no. of nodes in its subtree
+    par[x]=x;
+    urank[x]=1;
 }
-ll find(ll x)
+int find(int &x)
 {
-	if( parent[x] != x )	//path compression
-	{
-		parent[x] = find(parent[x]) ;
-	}
-	return parent[x];
+    if(par[x]==x)
+        return x;
+    else return find(par[x]);
 }
-
-void merge(ll x, ll y)
+void unite(int &a, int &b)
 {
-	ll xroot = find(x);
-	ll yroot = find(y);
-    if(xroot==yroot) return;    //note: ignore if same parent ( already belongs to same group. this line is not present in the actual library )
-	if( urank[xroot] <= urank[yroot] )	// Union by rank
-	{
-		parent[xroot] = yroot ;
-		urank[yroot] = urank[yroot] + urank[xroot] ;
-	}
-	else
-	{
-		parent[yroot] = xroot;
-		urank[xroot] = urank[xroot] + urank[yroot] ;
-	}
+    int pa=find(a);
+    int pb=find(b);
+    if(pa==pb) return;
+    if(urank[pa]>=urank[pb])
+    {
+        par[pb]=pa;
+        urank[pa]+=urank[pb];
+    }
+    else{
+        par[pa]=pb;
+        urank[pb]+=urank[pa];
+    }
 }
 
 int main()
 {
-    //https://codeforces.com/contest/1167/problem/C
     fast_cin
-
     int n,m;
-    cin >> n >> m;
-    for(int i=1;i<=n;i++) create(i);
+    cin >> n >> m;  //testing
+    for(int i=1;i<=n;i++) make_set(i);
     for(int i=0;i<m;i++)
     {
         int k;
@@ -78,7 +71,7 @@ int main()
         }
         for(int a=0;a+1<v_.size();a++)
         {
-            merge(v_[a],v_[a+1]);
+            unite(v_[a],v_[a+1]);
         }
     }
     for(int i=1;i<=n;i++) cout << urank[find(i)]<<" ";
