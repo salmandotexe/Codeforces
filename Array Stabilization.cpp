@@ -26,7 +26,7 @@ int main()
   if((v[n-2]-v[0])<(v[n-1]-v[1]))
     v.erase(v.begin()+(n-1));
   else
-    v.erase(v.begin());
+    v.erase(v.begin());//
 
   if(v.size()==1)
     cout << 0<<endl;
