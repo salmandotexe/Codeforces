@@ -22,7 +22,7 @@ using namespace std;
 
 int main()
 {
-    fast_cin
+    fast_cin;
     int n;
     cin >> n;
     vll a(n);
