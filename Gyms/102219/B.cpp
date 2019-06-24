@@ -8,9 +8,9 @@ int main()
 	cin >> t;
 	while(t--)
 	{
-long long a,b;
-cin >> a >> b;
-if(a==b) cout <<"YES\n";
-else cout <<"NO\n";
-}
+		long long a,b;
+		cin >> a >> b;
+		if(a==b) cout <<"YES\n";
+		else cout <<"NO\n";
+	}
 }
