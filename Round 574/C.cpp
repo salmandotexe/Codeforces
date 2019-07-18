@@ -17,35 +17,32 @@
 #define fast_cin ios_base::sync_with_stdio(false);cin.tie(NULL);
 #define precise fixed(cout);cout<<setprecision(16);
 using namespace std;
- 
-//ostream& operator << (ostream &out, vector<int> &v) { for(auto a:v) out << a<<" "; out<<endl; }
- 
- 
-ll n,k;
- 
-ll nc2(const ll &n)
+ 
+ 
+vll v(100005),w(100005);
+int n;
+ll dp[100005][3];
+ll f(int idx, int st)
 {
-    return n*(n+1)/2;
+    if(idx==-1) return max(f(0,0),f(0,1));
+    if(idx>n) return 0;
+    if(dp[idx][st]!=-1) return dp[idx][st];
+    ll mx=0;
+    if(st==0)
+        mx=max(f(idx+1,0),v[idx]+f(idx+1,1));
+    if(st==1)
+        mx=max(f(idx+1,1),w[idx]+f(idx+1,0));
+    return dp[idx][st]=mx;
 }
-const int maxn=1000006;
 int main()
 {
-    
-    cin >> n >> k;
-    vll v;
-    for(ll i=1;i<=maxn;i++){
-        v.pb(nc2(i));
-    }
+    mem(dp,-1);
+    //freopen("in.txt","r",stdin);
+    fast_cin
+    cin >> n;
+    for(int i=0;i<n;i++) cin >> v[i];
+    for(int i=0;i<n;i++) cin >> w[i];
     ll ans=0;
-    for(int i=1;i<=v.size();i++)
-    {
-        //cout << i+1 <<"c2 =" << v[i-1] <<endl;
-        //cout << "she ate " << v[i-1]-k << endl;
-        if(v[i-1]-k >=0 && i+v[i-1]-k==n ) {
-            ans=v[i-1]-k;
-            break;
-        }
-    }
+    ans=(f(-1,-1));
     cout << ans << endl;
- 
 }
