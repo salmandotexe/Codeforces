@@ -3,7 +3,7 @@
 #define vi vector<int>
 #define vll vector<ll>
 #define vvi vector < vi >
-#define pii pair<int,int>
+//#define pii pair<int,int>
 #define pll pair<long long, long long>
 #define mod 1000000007
 #define inf 1000000000000000001
