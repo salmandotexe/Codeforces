@@ -9,7 +9,7 @@ int main()
     while(T--)
     {
         ll a,b,d;
-        scanf("%lld%lld%lld",&a,&b,&d);
+        scanf("%lld%lld%lld",&a,&b,&d);//Problem I
 
         double ans = d*d;
 
