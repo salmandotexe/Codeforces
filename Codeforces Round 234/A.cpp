@@ -170,7 +170,6 @@ int main () {
             }
         }
 
-//        cout << "myVec contains:\n";
 //        for(int i=0; i<myVec.size(); i++) {
 //            cout << "i = " << i << ", myvec = " << myVec[i] << endl;
 //        }
