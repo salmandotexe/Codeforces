@@ -18,7 +18,7 @@
 #define precise fixed(cout);cout<<setprecision(16);
 using namespace std;
  
-// Disjoint Set DataStructure
+// Disjoint Set Data Structure
 const int maxn=10005;
 int parent[maxn]; 		// reserve space for map if n > 10000
 int urank[maxn];
