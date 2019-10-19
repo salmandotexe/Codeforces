@@ -33,7 +33,7 @@ int main()
   }
   for(int i=1;i<=n;i++) cin >> v[i];
 
-  //dp[idx][st] = min number of rest days if I do st on day idx.
+  ///dp[idx][st] = min number of rest days if I do st on day idx.
   for(int i=1;i<=n;i++)
   {
     for(int j=0;j<=2;j++)
