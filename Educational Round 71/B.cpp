@@ -16,7 +16,7 @@
 #define s second
 #define fast_cin ios_base::sync_with_stdio(false);cin.tie(NULL);
 #define precise fixed(cout);cout<<setprecision(16);
-using namespace std;
+using namespace std;//
  
 const int maxn=60;
 int A[maxn][maxn],B[maxn][maxn],O[maxn][maxn];
